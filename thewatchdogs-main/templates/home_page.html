@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Ruralcare AI Hub</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(45deg, #ff5f6d, #ffc371);
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease-in-out;
+        }
+
+        .buttons:hover {
+            box-shadow: 0px 0px 20px rgba(250, 246, 246, 0.2);
+            transition: 9ms;
+        }
+
+        .button {
+            margin: 10px 0;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ffffff;
+            color: #333333;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+
+        .button:hover {
+            background-color: #eeeeee;
+            color: #000000;
+        }
+
+        /* Icon styles */
+        .button-icon {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Welcome to Ruralcare AI Hub</h1>
+        <div class="buttons">
+            <a href="{{ url_for('ashaworkers') }}">
+                <button class="button"><i class="button-icon">🏠</i> Login as Village</button>
+            </a>
+            <a href="{{ url_for('index1') }}">
+                <button class="button"><i class="button-icon">🏙️</i> Login District</button>
+            </a>
+            <a href="{{ url_for('health1') }}">
+                <button class="button"><i class="button-icon">🏥</i> Login as Health Workers</button>
+            </a>
+        </div>
+    </div>
+
+</body>
+
+</html>

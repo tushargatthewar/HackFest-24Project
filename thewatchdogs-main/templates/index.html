@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask Dashboard</title>
+    <style>
+        /* Resetting default margin and padding for the body */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #ffffffe3;
+           
+            height: 100%;
+            overflow: auto;
+        }
+
+        /* Centering the h1 element */
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: #000000;
+        }
+
+        /* Styling the card container */
+        .card-container {
+            text-align: center;
+            border-radius: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        /* Styling the card */
+        .card {
+            background-color: #f6f6f6;
+            border-radius: 10px;
+            box-shadow: 10px 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 0 10px 20px;
+            padding: 20px;
+            width: calc(50% - 20px);
+            /* Set width to half of the container width minus margin */
+            max-width: 200px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card h2 {
+            margin-top: 0;
+            color: #007bff;
+        }
+
+         section {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
+        }
+
+        /* Style for the header */
+        header {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* Style for the iframe */
+
+        /* Styling the iframe */
+        iframe {
+            margin: 20px;
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 600px;
+            height: 400px;
+            transition: box-shadow 0.3s ease;
+        }
+
+        iframe:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Village  Dashboard</h1>
+    <div class="card-container">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Population</h5>
+            </div>
+            <div class="card-body">
+                <h2>{{ total_family_members }}</h2>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Total Vaccinated (Polio)</h5>
+            </div>
+            <div class="card-body">
+                <h2>{{ total_vaccinated_polio }}</h2>
+            </div>
+        </div>
+
+        <!-- Card for total not vaccinated -->
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Total Not Vaccinated (Polio)</h5>
+            </div>
+            <div class="card-body">
+                <h2>{{ total_not_vaccinated_polio }}</h2>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Total COVID-19 Vaccinated</h5>
+            </div>
+            <div class="card-body">
+                <h2>{{ total_covid_vaccinated }}</h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- Embedding the Dash dashboards -->
+    <iframe src="/dashboard/" width="800" height="600"></iframe>
+    <iframe src="/dashboard2/" width="800" height="600"></iframe>
+    <iframe src="/dashboard3/" width="800" height="600"></iframe>
+    <iframe src="/dashboard4/" width="800" height="600"></iframe>
+
+
+    <section>
+        <header>Tranportation Analysis </header>
+<div class="container">
+    <div class="card">
+        <div class="card-header"><div><b>Average Healthcare Spending per Family</b></div></div>
+        <div class="card-body">
+           
+            <p class="card-text">{{ average_healthcare_spending_value }}</p>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <div><b>average_transportation_spending_value y</b></div>
+        </div>
+        <div class="card-body">
+
+            <p class="card-text"> {{ average_transportation_spending_value  }}</p>
+        </div>
+    </div>
+</div>
+
+
+
+<iframe src="/dashboard5/" width="800" height="600"></iframe>
+<iframe src="/dashboard6/" width="800" height="600"></iframe>
+<iframe src="/dashboard7/" width="800" height="600"></iframe>
+<iframe src="/dashboard8/" width="800" height="600"></iframe>
+
+    </section>
+
+    <!-- JavaScript for fetching data from MongoDB and updating the cards -->
+    <script>
+        // Function to fetch data from MongoDB
+        async function fetchData() {
+            try {
+                const response = await fetch('/api/vaccination');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch data');
+                }
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error('Error fetching data:', error.message);
+                return [];
+            }
+        }
+
+        // Function to update the card contents
+        async function updateCards() {
+            try {
+                const data = await fetchData();
+
+                // Extract total vaccinated and not vaccinated counts
+                const totalVaccinated = data.filter(doc => doc.polio_vaccinated === 1).length;
+                const totalNotVaccinated = data.filter(doc => doc.polio_vaccinated === 0).length;
+
+                // Update the card contents
+                document.getElementById('total-vaccinated-polio').innerText = totalVaccinated;
+                document.getElementById('total-not-vaccinated-polio').innerText = totalNotVaccinated;
+            } catch (error) {
+                console.error('Error updating cards:', error.message);
+            }
+        }
+
+        // Update the cards after the page has fully loaded
+        window.addEventListener('load', updateCards);
+    </script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
+    integrity="sha384-dUQczT3Ojp7E4wqkI6Lr64uMRtS0WpiYtXhsULXAkA1EB4BpjuzkRxLqFda6Jg2m"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-pzjw8f+Q8g2LXyEx9rm2u7U9KRyLlHiZvldpk5lqeg4f3TuL/l+kdj5hqVslDvBy"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+           /* Resetting default margin and padding for the body */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #ffffffe3;
+           
+            height: 100%;
+            overflow: auto;
+        }
+
+        /* Centering the h1 element */
+        .navbar {
+            overflow: hidden;
+            color: white;
+        background-color:	#10898d ;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+             justify-content: center;
+        }
+
+        /* Navbar links */
+        .navbar a {
+            float: left;
+            font-size: 18px;
+            display: block;
+            color: rgb(255, 255, 255);
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+
+        /* Dropdown container */
+        .dropdown {
+            float: left;
+            overflow: hidden;
+        }
+
+        /* Dropdown button */
+        .dropdown .dropbtn {
+            font-size: 16px;
+            border: none;
+            outline: none;
+            color: black;
+            padding: 14px 20px;
+            background-color: transparent;
+            font-family: inherit;
+            margin: 0;
+        }
+
+        /* Dropdown content (hidden by default) */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        /* Links inside the dropdown */
+        .dropdown-content a {
+            float: none;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+
+        /* Add a grey background color to dropdown links on hover */
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        /* Show the dropdown menu on hover */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Centering the h1 element */
+        h1 {
+            text-align: center;
+            margin-top: 80px;
+            color: #33691E;
+        }
+          h2{
+            text-align: center;
+            margin-top: 80px;
+            color: #000000;
+        }
+        p{
+            text-align: center;
+            font-weight: bold;
+            margin-top: 80px;
+            color: #390101;
+        }
+
+        /* Styling the card container */
+     
+.card-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+        /* Styling the card */
+       .card {
+        align-items: center;
+         flex-wrap: wrap;
+   
+    backdrop-filter: blur(15px); /* Apply blur effect to the background */
+    background-image: linear-gradient(to right top, #4facfe, #00f2fe, #00e9e9, #00d8b4, #00c781);
+    border-radius: 10px;
+    box-shadow: 10px 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px 10px 0;
+    padding: 20px;
+    width: calc(50% - 50px);
+    /* Set width to half of the container width minus margin */
+    max-width: 200px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    display: inline-block; /* Display cards inline */
+}
+
+/* Add this container style to wrap the cards */
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card h2 {
+            margin-top: 0;
+            color: #007bff;
+        }
+
+         section {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+        }
+
+        /* Style for the header */
+        header {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* Style for the iframe */
+
+        /* Styling the iframe */
+        iframe {
+            margin: 20px;
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 600px;
+            height: 400px;
+            transition: box-shadow 0.3s ease;
+        }
+
+        iframe:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+      
+.card-container1 {
+    display: flex;
+}
+
+.card-body {
+    background-color: #f6f6f6;
+    border-radius: 10px;
+    box-shadow: 10px 4px 8px rgba(0, 0, 0, 0.1);
+    margin-right: 20px;
+    padding: 20px;
+    width: calc(50% - 20px);
+    max-width: 300px;
+    text-align: center;
+      margin-right: 300px;
+}
+
+.card-body:last-child {
+    margin-right: 300px;
+}
+
+.card-body ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.card-body li {
+    margin-bottom: 10px;
+}
+
+.card-body h3 {
+    margin-bottom: 10px;
+}
+
+.card-body p {
+    margin-bottom: 5px;
+}
+body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.section {
+    flex: 0 0 calc(33.33% - 20px);
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.section h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+
+
+.card h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 0;
+}
+
+ul li {
+    margin-bottom: 5px;
+}
+
+       .search-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+   margin-bottom: 10px;
+    width: 300px;
+    transition: border-color 0.3s;
+}
+
+        .search-input:focus {
+            border-color: #032f3c; /* Highlight border color on focus */
+        }
+        .search-form {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .export-button {
+            padding: 10px 20px;
+            background-color: #032f3c;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Hover effect */
+        .export-button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333333;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+
+        .summary-section {
+            margin-bottom: 20px;
+        }
+
+        .summary-section h1 {
+            border-bottom: 1px solid #cccccc;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .positive-aspects {
+            background-color: #e6f7ff;
+        }
+
+        .problems-faced {
+            background-color: #ffe6e6;
+        }
+
+        .positive-aspects li,
+        .problems-faced li {
+            padding: 10px;
+            border-radius: 5px;
+        }
+          #map {
+            height: 400px;
+            width: 100%;
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Drop shadow */
+            animation: fadeIn 1s ease-in-out; /* Fade-in animation */
+            overflow: hidden; /* Hide overflow */
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+       
+        
+        <a href="#vaccination">Vaccination Analysis</a>
+        <a href="#Tranportation">Tranportation Analysis</a>
+        <a href="#Nutrition">Nutrition Analysis</a>
+    <a href="{{ url_for('feedback') }}">Feedback Analysis</a>
+
+        <form class="search-form" action="/export_csv" method="POST">
+            <input type="text" name="village_name" class="search-input" placeholder="Enter Village Name...">
+            <button class="export-button" type="submit">Export Data</button>
+        </form>
+       
+     
+       
+
+
+    </div>
+    <div id="map"></div>
+    
+    <script>
+        function initMap() {
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 10,
+                center: { lat: 19.1383, lng: 77.3208 }, // Default center (Nanded)
+            });
+
+            // Add marker for user's location
+            let userMarker = new google.maps.Marker({
+                map,
+                title: "Your Location",
+            });
+
+            // Add marker for specified coordinates
+            const specifiedCoordinates = { lat: 19.628308, lng: 78.203237 };
+            let specifiedMarker = new google.maps.Marker({
+                position: specifiedCoordinates,
+                map,
+                title: "Specified Location",
+                icon: {
+                    url: "https://maps.google.com/mapfiles/ms/icons/blue-dot.png", // Custom marker icon
+                    scaledSize: new google.maps.Size(32, 32) // Custom icon size
+                }
+            });
+
+            // Request permission to access user's location
+            if (navigator.geolocation) {
+                navigator.geolocation.watchPosition((position) => {
+                    const userLocation = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+                    map.setCenter(userLocation);
+                    userMarker.setPosition(userLocation);
+                }, (error) => {
+                    console.error('Error getting user location:', error);
+                });
+            } else {
+                console.error('Geolocation is not supported by this browser.');
+            }
+        }
+    </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALqW1stUXtMZixCINS26qSogWgxDVQfcI&callback=initMap"></script>
+  
+    <h2>Village: {{ village_name }}</h2>
+    <h2>District: {{ district }}</h2>   
+    <p>Current Date and Time: {{ current_datetime }}</p>
+    
+   
+    
+    <span id="currentDate"></span>
+    <section id="vaccination">
+        <header>Vaccination Analysis </header>
+        <div class="heading">Vaccination Information</div>
+   
+<div class="card-container">
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title">Population</h5>
+        </div>
+        <div class="card-body">
+            <h2>{{ total_family_members }}</h2>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title">Total Vaccinated (Polio)</h5>
+        </div>
+        <div class="card-body">
+            <h2>{{ total_vaccinated_polio }}</h2>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title">Total Not Vaccinated (Polio)</h5>
+        </div>
+        <div class="card-body">
+            <h2>{{ total_not_vaccinated_polio }}</h2>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title">Total COVID-19 Vaccinated</h5>
+        </div>
+        <div class="card-body">
+            <h2>{{ total_covid_vaccinated }}</h2>
+        </div>
+    </div>
+</div>
+<form class="search-form" action="/generate_report" method="POST">
+    <input type="text" name="village_name" class="search-input" placeholder="Enter Village Name...">
+    <button class="export-button" type="submit">Download Analysisi Report</button>
+</form>
+<iframe src="/dashboard/" width="800" height="600"></iframe>
+<iframe src="/dashboard1/" width="800" height="600"></iframe>
+<iframe src="/dashboard2/" width="800" height="600"></iframe>
+<iframe src="/dashboard3/" width="800" height="600"></iframe>
+</section>
+    <!-- Add your Dash app components here -->  
+
+    <section id="Tranportation">
+        <header>Tranportation Analysis </header>
+       
+        <div class="card-container">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">government hospitals prefer</h5>
+            </div>
+            <div class="card-body">
+                <h2>{{ government_hospitals_count }}</h2>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">average healthcare spending per family</h5>
+            </div>
+            <div class="card-body">
+                <h2>{{ average_healthcare_spending_per_family }}</h2>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">private hospitals prefer</h5>
+            </div>
+            <div class="card-body">
+                <h2>{{ private_hospitals_count }}</h2>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">both hospitals count</h5>
+            </div>
+            <div class="card-body">
+                <h2>{{ both_hospitals_count }}</h2>
+            </div>
+        </div>
+        </div>
+        <iframe src="/dashboard4/" width="800" height="600"></iframe>
+        <iframe src="/dashboard5/" width="800" height="600"></iframe>
+        <iframe src="/dashboard6/" width="800" height="600"></iframe>
+        <iframe src="/dashboard7/" width="800" height="600">
+          </iframe>
+       
+    <div class="card-container1">
+        <div class="card-body">
+            <h3>Fees per Visit Statistics</h3>
+            <p>Average Fees per Visit (Urban): {{ urban_fees_per_visit }}</p>
+            <p>Average Fees per Visit (Rural): {{ rural_fees_per_visit }}</p>
+        </div>
+        <div class="card-body">
+            <ul>
+                <li>Government Hospitals: {{ government_hospitals_count }}</li>
+                <li>Private Hospitals: {{ private_hospitals_count }}</li>
+                <li>Both: {{ both_hospitals_count }}</li>
+            </ul>
+        </div>
+        
+    </div>
+
+    </section>
+    <section id="Nutrition">
+        <header>Nutrition Analysis </header>
+        <iframe src="/dashboard8/" width="800" height="600"></iframe>
+            <iframe src="/dashboard9/" width="800" height="600"></iframe>
+            <iframe src="/dashboard10/" width="800" height="600"></iframe>
+            <iframe src="/dashboard11/" width="800" height="600"></iframe>
+            <iframe src="/dashboard12/" width="800" height="600"></iframe>
+            <iframe src="/dashboard13/" width="800" height="600"></iframe>
+            <h1>Statistical Summaries</h1>
+            
+            
+            
+    <div class="section">
+        <h2>Categorical Fields</h2>
+        {% for field, counts in categorical_counts.items() %}
+        <div class="card">
+            <h3>{{ field }}</h3>
+            <ul>
+                {% for category, count in counts.items() %}
+                <li>{{ category }}: {{ count }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endfor %}
+    </div>
+    
+ 
+            
+        
+          
+    </section>
+    <section>
+        <header>pregnancy Analysis </header>
+        <iframe src="/dashboard14/" width="800" height="600"></iframe>
+        <iframe src="/dashboard15/" width="800" height="600"></iframe>
+        <iframe src="/dashboard16/" width="800" height="600"></iframe>
+        <iframe src="/dashboard17/" width="800" height="600"></iframe>
+        <div class="container">
+            <div class="summary-section problems-faced">
+                <h1>Summary of Problems Faced by Pregnant Women:</h1>
+                <ul>
+                    <li>No Prenatal Care: {{ no_prenatal_care }}</li>
+                    <li>Complications during Pregnancy: {{ complications }}</li>
+                    <li>Limited Access to Healthcare: {{ limited_healthcare_access }}</li>
+                    <li>Financial Barriers: {{ financial_barriers }}</li>
+                    <li>High Doctor Fees: {{ high_doctor_fees }}</li>
+                    <li>Underutilized Government Schemes: {{ underutilized_government_schemes }}</li>
+                    <li>Nutritional Concerns: {{ nutritional_concerns }}</li>
+                </ul>
+            </div>
+        
+            <div class="summary-section positive-aspects">
+                <h1>Summary of Positive Aspects:</h1>
+                <ul>
+                    <li>Received Prenatal Care: {{ received_prenatal_care }}</li>
+                    <li>No Complications during Pregnancy: {{ no_complications }}</li>
+                    <li>Adequate Access to Healthcare: {{ adequate_healthcare_access }}</li>
+                    <li>No Financial Barriers: {{ no_financial_barriers }}</li>
+                    <li>Low Doctor Fees: {{ low_doctor_fees }}</li>
+                    <li>Utilized Government Schemes: {{ utilized_government_schemes }}</li>
+                    <li>Adequate Nutrition: {{ adequate_nutrition }}</li>
+                </ul>
+            </div>
+        </div>
+        
+    </section>
+
+</body>
+
+</html>

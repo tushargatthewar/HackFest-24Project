@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vaccination Rate Data Collection Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #333;
+            text-align: center;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+         #display_village_name {
+        display: inline-block;
+
+        width: 70px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        background-color: #f0f0f0;
+        /* Add any additional styling you want */
+    }
+    </style>
+</head>
+
+<body>
+    <h2>Vaccination Rate Data Collection Form of {{ village_name }}</h2>
+    <form action="/submit2" method="post">
+
+        <label for="village_name">Village Name:</label><br>
+        <input type="text" id="village_name" name="village_name"><br>
+
+
+
+
+        <label for="awareness">Awareness of Vaccination:</label><br>
+        <input type="radio" id="awareness_yes" name="awareness" value="1">
+        <label for="awareness_yes">Yes</label>
+        <input type="radio" id="awareness_no" name="awareness" value="0">
+        <label for="awareness_no">No</label><br>
+
+        <label for="children_vaccinated">Children Having Vaccination:</label><br>
+        <input type="radio" id="children_vaccinated_yes" name="children_vaccinated" value="1">
+        <label for="children_vaccinated_yes">Yes</label>
+        <input type="radio" id="children_vaccinated_no" name="children_vaccinated" value="0">
+        <label for="children_vaccinated_no">No</label><br>
+
+        <label for="accessibility">Accessibility of Vaccination Services:</label><br>
+        <input type="radio" id="accessibility_yes" name="accessibility" value="1">
+        <label for="accessibility_yes">Yes</label>
+        <input type="radio" id="accessibility_no" name="accessibility" value="0">
+        <label for="accessibility_no">No</label><br>
+
+        <label for="trust">Trust in Healthcare Providers:</label><br>
+        <input type="radio" id="trust_yes" name="trust" value="1">
+        <label for="trust_yes">Yes</label>
+        <input type="radio" id="trust_no" name="trust" value="0">
+        <label for="trust_no">No</label><br>
+
+        <label for="community_engagement">Community Engagement and Support:</label><br>
+        <input type="radio" id="community_engagement_yes" name="community_engagement" value="1">
+        <label for="community_engagement_yes">Yes</label>
+        <input type="radio" id="community_engagement_no" name="community_engagement" value="0">
+        <label for="community_engagement_no">No</label><br>
+
+        <label for="num_members_vaccinated">Number of Members Vaccinated:</label><br>
+        <input type="number" id="num_members_vaccinated" name="num_members_vaccinated" min="0" max="100"><br>
+
+    <!-- Add radio buttons for COVID-19 vaccination -->
+    <label for="covid_vaccinated">COVID-19 Vaccinated:</label><br>
+    <input type="radio" id="covid_vaccinated_yes" name="covid_vaccinated" value="1">
+    <label for="covid_vaccinated_yes">Yes</label>
+    <input type="radio" id="covid_vaccinated_no" name="covid_vaccinated" value="0">
+    <label for="covid_vaccinated_no">No</label><br>
+    
+    <!-- Add radio buttons for polio vaccination -->
+    <label for="polio_vaccinated">Polio Vaccinated:</label><br>
+    <input type="radio" id="polio_vaccinated_yes" name="polio_vaccinated" value="1">
+    <label for="polio_vaccinated_yes">Yes</label>
+    <input type="radio" id="polio_vaccinated_no" name="polio_vaccinated" value="0">
+    <label for="polio_vaccinated_no">No</label><br>
+    
+    <!-- Add radio buttons for other disease vaccination -->
+    <label for="other_disease_vaccinated">Other Disease Vaccinated:</label><br>
+    <input type="radio" id="other_disease_vaccinated_yes" name="other_disease_vaccinated" value="1">
+    <label for="other_disease_vaccinated_yes">Yes</label>
+    <input type="radio" id="other_disease_vaccinated_no" name="other_disease_vaccinated" value="0">
+    <label for="other_disease_vaccinated_no">No</label><br>
+
+
+    <label for="total_family_members">Total Family Members:</label><br>
+    <input type="number" id="total_family_members" name="total_family_members" min="1"><br>
+    
+    <label for="asha_worker_help">Did an ASHA worker help?:</label><br>
+    <input type="radio" id="asha_worker_help_yes" name="asha_worker_help" value="1">
+    <label for="asha_worker_help_yes">Yes</label>
+    <input type="radio" id="asha_worker_help_no" name="asha_worker_help" value="0">
+    <label for="asha_worker_help_no">No</label><br>
+    
+    <label for="num_children">Number of Children:</label><br>
+    <input type="number" id="num_children" name="num_children" min="0"><br>
+    
+    <label for="num_adults">Number of Adults:</label><br>
+    <input type="number" id="num_adults" name="num_adults" min="0"><br>
+    
+    <label for="age_children">Age of Children (comma-separated):</label><br>
+    <input type="text" id="age_children" name="age_children"><br>
+    
+    <label for="age_adults">Age of Adults (comma-separated):</label><br>
+    <input type="text" id="age_adults" name="age_adults"><br>
+
+     
+        <!-- Add more vaccine options as needed -->
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+
+</html>

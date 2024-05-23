@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Analysis</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+form {
+    text-align: center;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #14bce6;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+h2 {
+    margin-top: 40px;
+    color: #333;
+}
+
+pre {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 20px;
+    overflow-x: auto;
+}
+
+input[type="hidden"] {
+    display: none;
+}
+
+    </style>
+</head>
+
+<body>
+    <h1>Feedback Analysis</h1>
+
+    <form action="/process_feedbacks" method="POST">
+        <button type="submit">Analyze Feedbacks</button>
+    </form>
+
+    {% if output %}
+    <h2>Analysis Output</h2>
+    <pre>{{ output }}</pre>
+
+    <form action="/download_pdf" method="POST">
+        <input type="hidden" name="output" value="{{ output }}">
+        <button type="submit">Download PDF</button>
+    </form>
+    {% endif %}
+</body>
+
+</html>

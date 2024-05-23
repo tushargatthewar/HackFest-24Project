@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asha Worker Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        
+
+        .container {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease-in-out;
+        }
+
+        .container:hover {
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #cccccc;
+            transition: border-color 0.3s ease-in-out;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            border-color: #333333;
+        }
+
+        .submit-btn {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4caf50;
+            color: #ffffff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .submit-btn:hover {
+            background-color: #45a049;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Asha Worker Registration</h2>
+        <form action="/register" method="POST">
+            <label for="asha-group">Asha Group Name:</label>
+            <input type="text" id="asha-group" name="asha-group" required>
+
+            <label for="village">Village Name:</label>
+            <input type="text" id="village" name="village" required>
+
+            <label for="taluka">Taluka Name:</label>
+            <input type="text" id="taluka" name="taluka" required>
+
+            <label for="district">District Name:</label>
+            <input type="text" id="district" name="district" required>
+
+            <label for="pin-code">Pin Code:</label>
+            <input type="text" id="pin-code" name="pin-code" required>
+
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit" class="submit-btn">Register</button>
+        </form>
+
+        <div class="login-link">
+            Already registered? <a href="/login1">Login here</a>
+        </div>
+    </div>
+
+</body>
+<script>
+    document.getElementById('district').addEventListener('change', function () {
+        var district = this.value;
+        fetch(`/get_villages/${district}`)
+            .then(response => response.json())
+            .then(data => {
+                var villageDropdown = document.getElementById('village');
+                villageDropdown.innerHTML = '';
+                data.forEach(function (village) {
+                    var option = document.createElement('option');
+                    option.value = village;
+                    option.textContent = village;
+                    villageDropdown.appendChild(option);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching villages:', error);
+            });
+    });
+</script>
+
+</html>

@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Form Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+    
+        h2 {
+            color: #333;
+            text-align: center;
+        }
+    
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+    
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+    
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+    
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    
+        #display_village_name {
+            display: inline-block;
+    
+            width: 70px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            background-color: #f0f0f0;
+            /* Add any additional styling you want */
+        }
+        </style>
+</head>
+
+<body>
+    <h2>Choose a Form to Fill Out</h2>
+    <div>
+        <button onclick="showForm('vaccination')">Vaccination Form</button>
+        <button onclick="showForm('transportation')">Transportation Form</button>
+        <button onclick="showForm('nutrition')">Nutrition Pattern Form</button>
+        <button onclick="showForm('pregnant')">Pregnant Women Form</button>
+        <button onclick="showForm('benefits')">Government Benefits Form</button>
+    </div>
+
+    <!-- Vaccination Form -->
+    <form id="vaccinationForm" action="/submit_vaccination" method="post" style="display: none;">
+        <!-- Include your vaccination form fields here -->
+        <h1>form5</h1>
+        <label for="village_name">Village Name:</label><br>
+        <input type="text" id="village_name" name="village_name"><br>
+        
+        
+        
+        
+        <label for="awareness">Awareness of Vaccination:</label><br>
+        <input type="radio" id="awareness_yes" name="awareness" value="1">
+        <label for="awareness_yes">Yes</label>
+        <input type="radio" id="awareness_no" name="awareness" value="0">
+        <label for="awareness_no">No</label><br>
+        
+        <label for="children_vaccinated">Children Having Vaccination:</label><br>
+        <input type="radio" id="children_vaccinated_yes" name="children_vaccinated" value="1">
+        <label for="children_vaccinated_yes">Yes</label>
+        <input type="radio" id="children_vaccinated_no" name="children_vaccinated" value="0">
+        <label for="children_vaccinated_no">No</label><br>
+        
+        <label for="accessibility">Accessibility of Vaccination Services:</label><br>
+        <input type="radio" id="accessibility_yes" name="accessibility" value="1">
+        <label for="accessibility_yes">Yes</label>
+        <input type="radio" id="accessibility_no" name="accessibility" value="0">
+        <label for="accessibility_no">No</label><br>
+        
+        <label for="trust">Trust in Healthcare Providers:</label><br>
+        <input type="radio" id="trust_yes" name="trust" value="1">
+        <label for="trust_yes">Yes</label>
+        <input type="radio" id="trust_no" name="trust" value="0">
+        <label for="trust_no">No</label><br>
+        
+        <label for="community_engagement">Community Engagement and Support:</label><br>
+        <input type="radio" id="community_engagement_yes" name="community_engagement" value="1">
+        <label for="community_engagement_yes">Yes</label>
+        <input type="radio" id="community_engagement_no" name="community_engagement" value="0">
+        <label for="community_engagement_no">No</label><br>
+        
+        <label for="num_members_vaccinated">Number of Members Vaccinated:</label><br>
+        <input type="number" id="num_members_vaccinated" name="num_members_vaccinated" min="0" max="100"><br>
+        
+        <!-- Add radio buttons for COVID-19 vaccination -->
+        <label for="covid_vaccinated">COVID-19 Vaccinated:</label><br>
+        <input type="radio" id="covid_vaccinated_yes" name="covid_vaccinated" value="1">
+        <label for="covid_vaccinated_yes">Yes</label>
+        <input type="radio" id="covid_vaccinated_no" name="covid_vaccinated" value="0">
+        <label for="covid_vaccinated_no">No</label><br>
+        
+        <!-- Add radio buttons for polio vaccination -->
+        <label for="polio_vaccinated">Polio Vaccinated:</label><br>
+        <input type="radio" id="polio_vaccinated_yes" name="polio_vaccinated" value="1">
+        <label for="polio_vaccinated_yes">Yes</label>
+        <input type="radio" id="polio_vaccinated_no" name="polio_vaccinated" value="0">
+        <label for="polio_vaccinated_no">No</label><br>
+        
+        <!-- Add radio buttons for other disease vaccination -->
+        <label for="other_disease_vaccinated">Other Disease Vaccinated:</label><br>
+        <input type="radio" id="other_disease_vaccinated_yes" name="other_disease_vaccinated" value="1">
+        <label for="other_disease_vaccinated_yes">Yes</label>
+        <input type="radio" id="other_disease_vaccinated_no" name="other_disease_vaccinated" value="0">
+        <label for="other_disease_vaccinated_no">No</label><br>
+        
+        
+        <label for="total_family_members">Total Family Members:</label><br>
+        <input type="number" id="total_family_members" name="total_family_members" min="1"><br>
+        
+        <label for="asha_worker_help">Did an ASHA worker help?:</label><br>
+        <input type="radio" id="asha_worker_help_yes" name="asha_worker_help" value="1">
+        <label for="asha_worker_help_yes">Yes</label>
+        <input type="radio" id="asha_worker_help_no" name="asha_worker_help" value="0">
+        <label for="asha_worker_help_no">No</label><br>
+        
+        <label for="num_children">Number of Children:</label><br>
+        <input type="number" id="num_children" name="num_children" min="0"><br>
+        
+        <label for="num_adults">Number of Adults:</label><br>
+        <input type="number" id="num_adults" name="num_adults" min="0"><br>
+        
+        <label for="age_children">Age of Children (comma-separated):</label><br>
+        <input type="text" id="age_children" name="age_children"><br>
+        
+        <label for="age_adults">Age of Adults (comma-separated):</label><br>
+        <input type="text" id="age_adults" name="age_adults"><br>
+        <input type="hidden" id="date" name="date" value="{{ today_date }}"><br>
+        
+        
+        <!-- Add more vaccine options as needed -->
+        
+        <input type="submit" value="Submit">
+    </form>
+
+    <!-- Transportation Form -->
+    <form id="transportationForm" action="/submit_transportation" method="post" style="display: none;">
+        <!-- Include your transportation form fields here -->
+        <h1>form1</h1>
+        <label for="village_name">Village Name:</label><br>
+        <input type="text" id="village_name" name="village_name"><br>
+        <div class="form-group">
+            <label for="income">Income of the Family:</label>
+            <input type="text" id="income" name="income">
+        </div>
+        <div class="form-group">
+            <label for="earning_members">Number of Family Members Earning:</label>
+            <input type="number" id="earning_members" name="earning_members">
+        </div>
+        <div class="form-group">
+            <label for="healthcare_spending">Amount Spent on Healthcare per Year:</label>
+            <input type="number" id="healthcare_spending" name="healthcare_spending">
+        </div>
+        <div class="form-group">
+            <label for="hospital_type">Type of Hospital Visited:</label>
+            <select id="hospital_type" name="hospital_type">
+                <option value="government">Government Hospital</option>
+                <option value="private">Private Hospital</option>
+                <option value="both">Both</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="transportation_spending">Transportation Spending to Travel from Rural to Urban
+                Hospital:</label>
+            <input type="number" id="transportation_spending" name="transportation_spending">
+        </div>
+        <div class="form-group">
+            <label for="urban_visits">Number of Visits to Urban Hospital per Year:</label>
+            <input type="number" id="urban_visits" name="urban_visits">
+        </div>
+        <div class="form-group">
+            <label for="rural_visits">Number of Visits to Rural/Government Hospital per Year:</label>
+            <input type="number" id="rural_visits" name="rural_visits">
+        </div>
+        <div class="form-group">
+            <label for="urban_fees">Hospital Fees per Visit in Urban Area:</label>
+            <input type="number" id="urban_fees" name="urban_fees">
+        </div>
+        <div class="form-group">
+            <label for="rural_fees">Hospital Fees per Visit in Rural Area:</label>
+            <input type="number" id="rural_fees" name="rural_fees">
+        </div>
+        
+        <input type="hidden" id="date" name="date" value="{{ today_date }}"><br>
+        <button type="submit" class="btn-submit">Submit Survey</button>
+    </form>
+
+    <!-- Nutrition Pattern Form -->
+    <form id="nutritionForm" action="/submit_nutrition" method="post" style="display: none;">
+        <!-- Include your nutrition pattern form fields here -->
+        <h1>form2</h1>
+        <label for="village_name">Village Name:</label><br>
+        <input type="text" id="village_name" name="village_name"><br>
+        <label for="income">Monthly Income:</label>
+        <input type="number" id="income" name="income" required><br><br>
+        
+        <label for="income_dependent">Does your food depend on your wages?</label><br>
+        <input type="radio" id="yes" name="income_dependent" value="yes" required>
+        <label for="yes">Yes</label><br>
+        <input type="radio" id="no" name="income_dependent" value="no">
+        <label for="no">No</label><br><br>
+        
+        <label for="fruits_frequency">How many times do you eat fruits in a week?</label>
+        <input type="number" id="fruits_frequency" name="fruits_frequency" required><br><br>
+        
+        <label for="vegetables_frequency">How many times do you cook green leafy vegetables in a week?</label>
+        <input type="number" id="vegetables_frequency" name="vegetables_frequency" required><br><br>
+        
+        <label for="primary_food_source">Primary Source of Food:</label>
+        <select id="primary_food_source" name="primary_food_source" required>
+            <option value="homegrown">Homegrown</option>
+            <option value="purchased">Purchased</option>
+            <option value="received_as_aid">Received as Aid</option>
+        </select><br><br>
+        
+        <label for="household_size">Household Size:</label>
+        <input type="number" id="household_size" name="household_size" required><br><br>
+        
+        <label for="food_consumption">Do you consume dal, rice, and chapati daily?</label><br>
+        <input type="radio" id="yes_food" name="food_consumption" value="yes" required>
+        <label for="yes_food">Yes</label><br>
+        <input type="radio" id="no_food" name="food_consumption" value="no">
+        <label for="no_food">No</label><br><br>
+        
+        <label for="afford_fruits">Can you afford fruits?</label><br>
+        <input type="radio" id="yes_afford" name="afford_fruits" value="yes" required>
+        <label for="yes_afford">Yes</label><br>
+        <input type="radio" id="no_afford" name="afford_fruits" value="no">
+        <label for="no_afford">No</label><br><br>
+        
+        <label for="clean_water">Do you have access to clean water?</label><br>
+        <input type="radio" id="yes_water" name="clean_water" value="yes" required>
+        <label for="yes_water">Yes</label><br>
+        <input type="radio" id="no_water" name="clean_water" value="no">
+        <label for="no_water">No</label><br><br>
+        
+        <label for="water_source">Water Source:</label><br>
+        <input type="radio" id="common_water" name="water_source" value="common" required>
+        <label for="common_water">Common Water</label><br>
+        <input type="radio" id="mineral_water" name="water_source" value="mineral">
+        <label for="mineral_water">Mineral Water</label><br><br>
+        
+        <label for="children_milk">Do children in your household consume milk twice daily?</label><br>
+        <input type="radio" id="yes_milk" name="children_milk" value="yes" required>
+        <label for="yes_milk">Yes</label><br>
+        <input type="radio" id="no_milk" name="children_milk" value="no">
+        <label for="no_milk">No</label><br><br>
+        
+        <label for="children_nutrition">Do children in your household get nutritious food daily?</label><br>
+        <input type="radio" id="yes_nutrition" name="children_nutrition" value="yes" required>
+        <label for="yes_nutrition">Yes</label><br>
+        <input type="radio" id="no_nutrition" name="children_nutrition" value="no">
+        <label for="no_nutrition">No</label><br><br>
+        <input type="hidden" id="date" name="date" value="{{ today_date }}"><br>
+        
+        <input type="submit" value="Submit">
+    </form>
+
+    <!-- Pregnant Women Form -->
+    <form id="pregnantForm" action="/submit_pregnant" method="post" style="display: none;">
+        <!-- Include your pregnant women form fields here -->
+        <h1>form3</h1>
+        <label for="village_name">Village Name:</label><br>
+        <input type="text" id="village_name" name="village_name"><br>
+        <h3>Prenatal Care:</h3>
+        <label for="prenatal_care">Are you receiving prenatal care?</label><br>
+        <input type="radio" id="yes_prenatal" name="prenatal_care" value="yes" required>
+        <label for="yes_prenatal">Yes</label><br>
+        <input type="radio" id="no_prenatal" name="prenatal_care" value="no">
+        <label for="no_prenatal">No</label><br><br>
+        
+        <label for="visit_frequency">How often do you visit a healthcare provider during pregnancy?</label><br>
+        <input type="text" id="visit_frequency" name="visit_frequency" required><br><br>
+        
+        <label for="complications">Any complications during pregnancy?</label><br>
+        <input type="text" id="complications" name="complications"><br><br>
+        
+        <h3>Nutritional Intake:</h3>
+        <label for="vitamin_intake">Are you taking prenatal vitamins or supplements?</label><br>
+        <input type="radio" id="yes_vitamin" name="vitamin_intake" value="yes" required>
+        <label for="yes_vitamin">Yes</label><br>
+        <input type="radio" id="no_vitamin" name="vitamin_intake" value="no">
+        <label for="no_vitamin">No</label><br><br>
+        
+        <label for="meals_per_day">How many meals do you eat per day?</label><br>
+        <input type="number" id="meals_per_day" name="meals_per_day" required><br><br>
+        
+        <label for="nutrient_intake">Are you consuming foods rich in folic acid, iron, calcium, and other nutrients recommended
+            during pregnancy?</label><br>
+        <input type="radio" id="yes_nutrient" name="nutrient_intake" value="yes" required>
+        <label for="yes_nutrient">Yes</label><br>
+        <input type="radio" id="no_nutrient" name="nutrient_intake" value="no">
+        <label for="no_nutrient">No</label><br><br>
+        
+        <h3>Access to Healthcare:</h3>
+        <label for="healthcare_distance">Distance to the nearest healthcare facility offering maternal care:</label><br>
+        <input type="text" id="healthcare_distance" name="healthcare_distance" required><br><br>
+        
+    <label for="transportation">Availability of transportation for healthcare visits:</label><br>
+    <select id="transportation" name="transportation" required>
+        <option value="available">Available</option>
+        <option value="limited">Limited</option>
+        <option value="not_available">Not Available</option>
+    </select><br><br>
+        
+        <label for="financial_barriers">Any financial barriers to accessing healthcare services?</label><br>
+        <select id="financial_barriers" name="financial_barriers">
+            <option value="no">No Financial Barriers</option>
+            <option value="cost_of_services">Cost of Services</option>
+            <option value="transportation_costs">Transportation Costs</option>
+            <option value="lack_of_insurance">Lack of Insurance</option>
+            <option value="other">Other</option>
+        </select><br><br>
+         <label for="delivery_preference">Preference for delivery:</label><br>
+        <select id="delivery_preference" name="delivery_preference" required>
+            <option value="government">Government</option>
+            <option value="private">Private</option>
+        </select><br><br>
+    <label for="government_schemes">During pregnancy, did you receive any benefits from government schemes?</label><br>
+    <select id="government_schemes" name="government_schemes">
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+    </select><br><br>
+    <label for="doctor_fees">What is the doctor's fee per visit?</label><br>
+    <input type="number" id="doctor_fees" name="doctor_fees" placeholder="Enter amount" required><br><br>
+<input type="hidden" id="date" name="date" value="{{ today_date }}"><br>
+
+        
+        <input type="submit" value="Submit">
+    </form>
+
+    <!-- Government Benefits Form -->
+    <form id="benefitsForm" action="/submit_benefits" method="post" style="display: none;">
+        <!-- Include your government benefits form fields here -->
+        <h1>form5</h1>
+        <label for="village_name">Village Name:</label><br>
+        <input type="text" id="village_name" name="village_name"><br>
+        <!DOCTYPE html>
+        <html lang="en">
+        
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Government Schemes Reviews</title>
+        </head>
+        
+        <body>
+            <h2>Government Schemes Reviews</h2>
+            <form action="/submit" method="post">
+                <label for="scheme_name">Government Scheme Name:</label><br>
+                <select id="scheme_name" name="scheme_name" required>
+                    <option value="scheme_1">Scheme 1</option>
+                    <option value="scheme_2">Scheme 2</option>
+                    <option value="scheme_3">Scheme 3</option>
+                    <!-- Add more schemes as needed -->
+                </select><br><br>
+        
+                <label for="scheme_review">Review of the Scheme:</label><br>
+                <select id="scheme_review" name="scheme_review" required>
+                    <option value="getting_but_no_awareness">Getting benefits but lack of awareness in the village</option>
+                    <option value="applied_but_not_getting">Applied for the scheme but not receiving any benefits</option>
+                    <option value="dont_know">Lack of information about the scheme, villagers are unaware</option>
+                    <option value="no_one_tell_in_village">No one has informed us about the scheme in our village</option>
+                    <option value="not_applicable">Not applicable to our village's demographic or geographical situation
+                    </option>
+                    <option value="confusing_process">Received benefits, but the process was confusing</option>
+                    <option value="difficulties_in_application">Aware of the scheme but facing difficulties in the application
+                        process</option>
+                    <option value="partial_benefits">Received partial benefits, not as expected</option>
+                    <option value="inconsistent_implementation">Scheme is helpful but implementation is inconsistent</option>
+                    <option value="insufficient_benefits">Benefits received are insufficient for our needs</option>
+                    <option value="challenges_in_accessing_benefits">Aware of the scheme but facing challenges in accessing
+                        benefits</option>
+                    <option value="unclear_eligibility_criteria">Scheme is beneficial, but the eligibility criteria are unclear
+                    </option>
+                    <option value="inadequate_benefits">Scheme benefits are inadequate considering the cost of living</option>
+                    <option value="positive_impact">Scheme has positively impacted our village's development</option>
+                    <option value="lack_of_transparency">Received benefits, but the scheme lacks transparency</option>
+                    <option value="delayed_benefits">Scheme benefits are delayed, causing inconvenience</option>
+                    <option value="accessibility_issues">Scheme is helpful, but accessibility is a major issue</option>
+                    <option value="improved_infrastructure">Scheme has improved our village's infrastructure significantly
+                    </option>
+                    <option value="positive_affect_on_livelihood">Scheme has positively affected the livelihood of villagers
+                    </option>
+                    <option value="bureaucratic_hurdles">Scheme is beneficial, but bureaucratic hurdles are problematic</option>
+                </select><br><br>
+                <input type="hidden" id="date" name="date" value="{{ today_date }}"><br>
+        
+                <input type="submit" value="Submit">
+            </form>
+        </body>
+        
+        </html>
+
+    </form>
+
+    <script>
+        function showForm(formName) {
+            // Hide all forms
+            document.querySelectorAll('form').forEach(form => {
+                form.style.display = 'none';
+            });
+
+            // Show the selected form
+            document.getElementById(formName + 'Form').style.display = 'block';
+        }
+    </script>
+</body>
+
+</html>
